@@ -12,7 +12,13 @@
 
 ## 目录
 
+- [附录 A PyTorch 入门](#A)
+- 第 0 篇 先导篇
+- - [1 一个及其简单的强化学习实例](#sec_1)
+- - [2 马尔可夫决策过程](#sec_2)
+
 #### 附录 A PyTorch 入门
+<a id='A'></a>
 
 [./pyTorch_learn/](./pyTorch_learn/)
 
@@ -70,10 +76,19 @@ net.load_state_dict(torch.load('./pyTorch_learn/data/' + 'model.pt'))
 #### 第 0 篇 先导篇
 
 ##### 1 一个及其简单的强化学习实例
+<a id='sec_1'></a>
+
+[./ch_0/sec_1/](./ch_0/sec_1/)
 
 很简答的一个实例，探讨“探索”与“利用”间的博弈平衡。
 
 我对原书的代码进行了一些改进与 typo 。
 
 ##### 2 马尔可夫决策过程
+<a id='sec_2'></a>
 
+[./ch_0/sec_2/](./ch_0/sec_2/)
+
+优势函数（Advantage Function）：$A(s, a) = q_\pi (s, a) - v_\pi (s)$
+
+造了一个交互环境，以后测试可以用到。典型的“网格世界”。
