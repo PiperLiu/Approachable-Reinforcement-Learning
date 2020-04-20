@@ -16,6 +16,20 @@
 - 第 0 篇 先导篇
 - - [1 一个及其简单的强化学习实例](#sec_1)
 - - [2 马尔可夫决策过程](#sec_2)
+- 第 1 篇 基于值函数的方法
+- - [3 基于动态规划的方法](#sec_3)
+- - [4 基于蒙特卡洛的方法](#sec_4)
+- - [5 基于时间差分的方法](#sec_5)
+- - [6 基于函数逼近的方法](#sec_6)
+- 第 2 篇 直接策略搜索方法
+- - [7 策略梯度方法](#sec_7)
+- - [8 Actor-Critic 方法](#sec_8)
+- - [9 PPO 方法](#sec_9)
+- - [10 DDPG方法](#sec_10)
+- 第 3 篇 基于模型的强化学习方法
+- - [11 基于模型预测控制的强化学习方法](#sec_11)
+- - [12 AlphaZero 原理浅析](#sec_12)
+- - [13 AlphaZero 实战：从零学下五子棋](#sec_13)
 
 #### 附录 A PyTorch 入门
 <a id='A'></a>
@@ -92,3 +106,15 @@ net.load_state_dict(torch.load('./pyTorch_learn/data/' + 'model.pt'))
 优势函数（Advantage Function）：$A(s, a) = q_\pi (s, a) - v_\pi (s)$
 
 造了一个交互环境，以后测试可以用到。典型的“网格世界”。
+
+#### 第 1 篇 基于值函数的方法
+
+##### 3 基于动态规划的方法
+<a id='sec_3'></a>
+
+[./ch_1/sec_3/](./ch_1/sec_3/)
+
+- 修改了“鸳鸯环境”：[yuan_yang_env.py](./ch_1/sec_3/yuan_yang_env.py)
+- 策略迭代：[dp_policy_iter.py](./ch_1/sec_3/dp_policy_iter.py)
+- 价值迭代：[dp_value_iter.py](./ch_1/sec_3/dp_value_iter.py)
+

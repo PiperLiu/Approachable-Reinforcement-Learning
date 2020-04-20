@@ -43,6 +43,8 @@ class YuanYangEnv:
         self.bird_male_position = [0, 0]
         self.bird_female_init_position = [1080, 0]
 
+        self.path = []
+
     def collide(self, state_position):
         flag = 1
         flag1 = 1
@@ -99,8 +101,8 @@ class YuanYangEnv:
         i = int(state / 10)
         j = state % 10
         position = [0, 0]
-        postion[0] = 120 * j
-        postion[1] = 90 * i
+        position[0] = 120 * j
+        position[1] = 90 * i
         return position
     
     def position_to_state(self, position):
@@ -204,6 +206,13 @@ class YuanYangEnv:
                     round(float(self.value[i, j]), 3)), True, (0, 0, 0)
                 )
                 self.viewer.blit(surface, (120 * i + 5, 90 * j + 70))
+
+        # 画路径点
+        for i in range(len(self.path)):
+            rec_position = self.state_to_position(self.path[i])
+            pygame.draw.rect(self.viewer, [255, 0, 0], [rec_position[0], rec_position[1], 120, 90], 3)
+            surface = self.font.render(str(i), True, (255, 0, 0))
+            self.viewer.blit(surface, (rec_position[0] + 5, rec_position[1] + 5))
         
         pygame.display.update()
         self.gameover()
