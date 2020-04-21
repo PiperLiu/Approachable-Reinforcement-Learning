@@ -9,8 +9,9 @@ class YuanYangEnv:
         for i in range(0, 100):
             self.states.append(i)
         self.actions = ['e', 's', 'w', 'n']
-        self.gamma = 0.8
-        self.value = np.zeros((10, 10))
+        # 蒙特卡洛需要修改 gamma ，防止长远回报过快衰减
+        self.gamma = 0.95
+        self.action_value = np.zeros((100, 4))
 
         self.viewer = None
         self.FPSCLOCK = pygame.time.Clock()
@@ -130,9 +131,9 @@ class YuanYangEnv:
         flag_collide = self.collide(current_position)
         flag_find = self.find(current_position)
         if flag_collide == 1:
-            return state, -1, True
+            return state, -10, True
         if flag_find == 1:
-            return state, 1, True
+            return state, 10, True
 
         if action == 'e':
             next_position[0] = current_position[0] + 120
@@ -149,13 +150,13 @@ class YuanYangEnv:
 
         flag_collide = self.collide(next_position)
         if flag_collide == 1:
-            return self.position_to_state(current_position), -1, True
+            return self.position_to_state(current_position), -10, True
         
         flag_find = self.find(next_position)
         if flag_find == 1:
-            return self.position_to_state(next_position), 1, True
+            return self.position_to_state(next_position), 10, True
         
-        return self.position_to_state(next_position), 0, False
+        return self.position_to_state(next_position), -2, False
     
     def gameover(self):
         for event in pygame.event.get():
@@ -202,12 +203,22 @@ class YuanYangEnv:
         self.viewer.blit(self.bird_female, self.bird_female_init_position)
         self.viewer.blit(self.bird_male, self.bird_male_init_position)
 
-        for i in range(10):
-            for j in range(10):
-                surface = self.font.render(str(
-                    round(float(self.value[i, j]), 3)), True, (0, 0, 0)
-                )
-                self.viewer.blit(surface, (120 * i + 5, 90 * j + 70))
+        # 画动作-值函数
+        for i in range(100):
+            y = int(i / 10)
+            x = i % 10
+            # 往东的值函数
+            surface = self.font.render(str(round(float(self.action_value[i, 0]), 2)), True, (0, 0, 0))
+            self.viewer.blit(surface, (120 * x + 80, 90 * y + 45))
+            # 往南的值函数
+            surface = self.font.render(str(round(float(self.action_value[i, 1]), 2)), True, (0, 0, 0))
+            self.viewer.blit(surface, (120 * x + 50, 90 * y + 70))
+            # 往西的值函数
+            surface = self.font.render(str(round(float(self.action_value[i, 2]), 2)), True, (0, 0, 0))
+            self.viewer.blit(surface, (120 * x + 10, 90 * y + 45))
+            # 往北的值函数
+            surface = self.font.render(str(round(float(self.action_value[i, 3]), 2)), True, (0, 0, 0))
+            self.viewer.blit(surface, (120 * x + 50, 90 * y + 10))
 
         # 画路径点
         for i in range(len(self.path)):

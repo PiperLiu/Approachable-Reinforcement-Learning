@@ -118,3 +118,11 @@ net.load_state_dict(torch.load('./pyTorch_learn/data/' + 'model.pt'))
 - 策略迭代：[dp_policy_iter.py](./ch_1/sec_3/dp_policy_iter.py)
 - 价值迭代：[dp_value_iter.py](./ch_1/sec_3/dp_value_iter.py)
 
+##### 4 基于蒙特卡洛的方法
+<a id='sec_4'></a>
+
+[./ch_1/sec_4/](./ch_1/sec_4/)
+
+基于蒙特卡洛方法，分别实现了：
+- 纯贪心策略；
+- 同轨策略下的 Epsilon-贪心策略。
