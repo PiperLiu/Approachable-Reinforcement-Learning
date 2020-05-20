@@ -181,3 +181,26 @@ flag_collide = self.collide(next_position)
 对于此问题，其实还可以另一个思路：调高撞墙的痛感。
 - 设置奖励为(-1000, 10, -2)，如次，小鸟便不敢撞墙：因为撞墙太疼了！！！
 - 并且，小鸟也不会“多走路”，因为多走路也有痛感。你会发现，如此得到的结果，小鸟总是能找到最优方案（最短的路径）。
+
+##### 6 基于函数逼近的方法
+<a id='sec_6'></a>
+
+[./ch_1/sec_6/](./ch_1/sec_6/)
+
+本节前半部分最后一次使用“鸳鸯系统”，我发现：
+- 无论是正常向量状态表示，还是固定稀疏状态表示，书中都将 `epsilon = epsilon * 0.99` 在迭代中去掉；
+- 事实证明，不应该将其去掉，尤其是第一组情况。第一组情况其实就是上节的表格型 q-learning ；
+- 固定稀疏表示中，可以不加探索欲望的收敛（在这个环境中）。
+
+此外，还发现：
+- 固定稀疏中，鸟倾向于走直线；
+- 我认为这是因为固定稀疏矩阵中，抽取了特征，同一个 x 或同一个 y 对应的状态，其价值更趋同。
+
+本节后半部分：非线性函数逼近。
+
+书中没有给代码地址，我 Google 到作者应该是借鉴了这个：[https://github.com/yenchenlin/DeepLearningFlappyBird](https://github.com/yenchenlin/DeepLearningFlappyBird)
+- 我将这个项目写在了：[./ch_1/sec_6/flappy_bird/](./ch_1/sec_6/flappy_bird/)
+- - 我添加了手动操作体验游戏的部分，按 H 键可以煽动翅膀：[./ch_1/sec_6/flappy_bird/game/keyboard_agent.py](./ch_1/sec_6/flappy_bird/game/keyboard_agent.py)
+- - 书上是 tf 1 的代码，我使用 tf 2 重写，这个过程中参考了：[https://github.com/tomjur/TF2.0DQN](https://github.com/tomjur/TF2.0DQN)
+- `python -u "d:\GitHub\rl\Approachable-Reinforcement-Learning\ch_1\sec_6\flappy_bird\dqn_agent.py"`以训练
+
