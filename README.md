@@ -25,7 +25,7 @@
 - - [7 策略梯度方法](#sec_7)
 - - [8 Actor-Critic 方法](#sec_8)
 - - [9 PPO 方法](#sec_9)
-- - [10 DDPG方法](#sec_10)
+- - [10 DDPG 方法](#sec_10)
 - 第 3 篇 基于模型的强化学习方法
 - - [11 基于模型预测控制的强化学习方法](#sec_11)
 - - [12 AlphaZero 原理浅析](#sec_12)
@@ -204,3 +204,29 @@ flag_collide = self.collide(next_position)
 - - 书上是 tf 1 的代码，我使用 tf 2 重写，这个过程中参考了：[https://github.com/tomjur/TF2.0DQN](https://github.com/tomjur/TF2.0DQN)
 - `python -u "d:\GitHub\rl\Approachable-Reinforcement-Learning\ch_1\sec_6\flappy_bird\dqn_agent.py"`以训练
 
+#### 第 2 篇 直接策略搜索方法
+
+##### 7 策略梯度方法
+<a id='sec_7'></a>
+
+# 书上都是 tf1 的例子，很乱
+# 还不会用 tf2 重写，先弃坑
+# 2020年6月20日17点10分，先把KDD比赛做完，再回来写这个
+
+
+[./ch_2/sec_7/](./ch_2/sec_7/)
+
+- 修改了“鸳鸯环境”：[yuan_yang_env.py](./ch_1/sec_3/yuan_yang_env.py)
+- 策略迭代：[dp_policy_iter.py](./ch_1/sec_3/dp_policy_iter.py)
+- 价值迭代：[dp_value_iter.py](./ch_1/sec_3/dp_value_iter.py)
+
+- 第 2 篇 直接策略搜索方法
+- - [7 策略梯度方法](#sec_7)
+- - [8 Actor-Critic 方法](#sec_8)
+- - [9 PPO 方法](#sec_9)
+- - [10 DDPG 方法](#sec_10)
+
+- 第 3 篇 基于模型的强化学习方法
+- - [11 基于模型预测控制的强化学习方法](#sec_11)
+- - [12 AlphaZero 原理浅析](#sec_12)
+- - [13 AlphaZero 实战：从零学下五子棋](#sec_13)
