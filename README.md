@@ -185,7 +185,7 @@ flag_collide = self.collide(next_position)
 ##### 6 基于函数逼近的方法
 <a id='sec_6'></a>
 
-[./ch_1/sec_6/](./ch_1/sec_6/)
+[./ch_1/sec_6/](./ch_1/sec_6/)a
 
 本节前半部分最后一次使用“鸳鸯系统”，我发现：
 - 无论是正常向量状态表示，还是固定稀疏状态表示，书中都将 `epsilon = epsilon * 0.99` 在迭代中去掉；
