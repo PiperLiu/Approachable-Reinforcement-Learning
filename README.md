@@ -1,16 +1,22 @@
-# 笔记：《深入浅出强化学习：编程实战》
+# 强化学习练手场地
+这个仓库本来用于复现某本国内强化学习教材的案例，奈何这本书写得实在太差了，因此弃坑此书。我的书评在这里：[豆瓣书评](https://book.douban.com/review/12673161/)。
 
-> 因为这本书 2019 年 11 月刚刚出版，我就先不公开我的笔记了（make it private）。
+现在，这个仓库用于存储一些强化学习练手小项目与算法实验。具体来讲，就是不至于单独成一个 repo 的项目，但是又值得拿出来讨论的代码。
 
-## 前言
-作者是南开大学讲师，郭宪。
-知道这本书是在知乎上，阅读强化学习文章时，发现其总来自一个账号（[@天津包子馅儿](https://www.zhihu.com/people/guoxiansia)），就是郭老师。
-学校有活动：“你买书、学校掏钱。”在书市选书，免费寄到我家，开学后带到图书馆归还就可。
-那正好有这本书。
+### 我的笔记分布
+- 🥊 入门学习 / 读书笔记 [GitHub链接：PiperLiu/Reinforcement-Learning-practice-zh](https://github.com/PiperLiu/Reinforcement-Learning-practice-zh)
+- 💻 阅读论文 / 视频课程的笔记 [GitHub链接：PiperLiu/introRL](https://github.com/PiperLiu/introRL)
+- ✨ 大小算法 / 练手操场 [GitHub链接：PiperLiu/Approachable-Reinforcement-Learning](https://github.com/PiperLiu/Approachable-Reinforcement-Learning)
 
-粗略看了一下，蛮不错的。排版可能有些粗糙，但“一段代码、一段解读”是我喜欢的风格。有了代码，就不会云里雾里。
+### 仓库目录
+- 强化学习基础复现案例 [转到摘要与索引](#强化学习基础复现案例)
 
-## 目录
+
+****
+
+## 强化学习基础复现案例
+
+参考《深入浅出强化学习：编程实战》内容。奈何实在写得不行，因此照着复现了第0、1章与AlphaZero后，弃坑。
 
 - [附录 A PyTorch 入门](#A)
 - 第 0 篇 先导篇
@@ -21,17 +27,10 @@
 - - [4 基于蒙特卡洛的方法](#sec_4)
 - - [5 基于时间差分的方法](#sec_5)
 - - [6 基于函数逼近的方法](#sec_6)
-- 第 2 篇 直接策略搜索方法
-- - [7 策略梯度方法](#sec_7)
-- - [8 Actor-Critic 方法](#sec_8)
-- - [9 PPO 方法](#sec_9)
-- - [10 DDPG 方法](#sec_10)
-- 第 3 篇 基于模型的强化学习方法
-- - [11 基于模型预测控制的强化学习方法](#sec_11)
-- - [12 AlphaZero 原理浅析](#sec_12)
-- - [13 AlphaZero 实战：从零学下五子棋](#sec_13)
+- AlphaZero 实战：五子棋
+- - [链接](#sec_11)
 
-#### 附录 A PyTorch 入门
+### 附录 A PyTorch 入门
 <a id='A'></a>
 
 [./pyTorch_learn/](./pyTorch_learn/)
@@ -87,9 +86,9 @@ torch.save(net.state_dict(), './pyTorch_learn/data/' + 'model.pt')
 net.load_state_dict(torch.load('./pyTorch_learn/data/' + 'model.pt'))
 ```
 
-#### 第 0 篇 先导篇
+### 第 0 篇 先导篇
 
-##### 1 一个及其简单的强化学习实例
+#### 1 一个及其简单的强化学习实例
 <a id='sec_1'></a>
 
 [./ch_0/sec_1/](./ch_0/sec_1/)
@@ -98,7 +97,7 @@ net.load_state_dict(torch.load('./pyTorch_learn/data/' + 'model.pt'))
 
 我对原书的代码进行了一些改进与 typo 。
 
-##### 2 马尔可夫决策过程
+#### 2 马尔可夫决策过程
 <a id='sec_2'></a>
 
 [./ch_0/sec_2/](./ch_0/sec_2/)
@@ -107,9 +106,9 @@ net.load_state_dict(torch.load('./pyTorch_learn/data/' + 'model.pt'))
 
 造了一个交互环境，以后测试可以用到。典型的“网格世界”。
 
-#### 第 1 篇 基于值函数的方法
+### 第 1 篇 基于值函数的方法
 
-##### 3 基于动态规划的方法
+#### 3 基于动态规划的方法
 <a id='sec_3'></a>
 
 [./ch_1/sec_3/](./ch_1/sec_3/)
@@ -118,7 +117,7 @@ net.load_state_dict(torch.load('./pyTorch_learn/data/' + 'model.pt'))
 - 策略迭代：[dp_policy_iter.py](./ch_1/sec_3/dp_policy_iter.py)
 - 价值迭代：[dp_value_iter.py](./ch_1/sec_3/dp_value_iter.py)
 
-##### 4 基于蒙特卡洛的方法
+#### 4 基于蒙特卡洛的方法
 <a id='sec_4'></a>
 
 [./ch_1/sec_4/](./ch_1/sec_4/)
@@ -127,7 +126,7 @@ net.load_state_dict(torch.load('./pyTorch_learn/data/' + 'model.pt'))
 - 纯贪心策略；
 - 同轨策略下的 Epsilon-贪心策略。
 
-##### 5 基于时间差分的方法
+#### 5 基于时间差分的方法
 <a id='sec_5'></a>
 
 [./ch_1/sec_5/](./ch_1/sec_5/)
@@ -182,7 +181,7 @@ flag_collide = self.collide(next_position)
 - 设置奖励为(-1000, 10, -2)，如次，小鸟便不敢撞墙：因为撞墙太疼了！！！
 - 并且，小鸟也不会“多走路”，因为多走路也有痛感。你会发现，如此得到的结果，小鸟总是能找到最优方案（最短的路径）。
 
-##### 6 基于函数逼近的方法
+#### 6 基于函数逼近的方法
 <a id='sec_6'></a>
 
 [./ch_1/sec_6/](./ch_1/sec_6/)a
@@ -204,29 +203,7 @@ flag_collide = self.collide(next_position)
 - - 书上是 tf 1 的代码，我使用 tf 2 重写，这个过程中参考了：[https://github.com/tomjur/TF2.0DQN](https://github.com/tomjur/TF2.0DQN)
 - `python -u "d:\GitHub\rl\Approachable-Reinforcement-Learning\ch_1\sec_6\flappy_bird\dqn_agent.py"`以训练
 
-#### 第 2 篇 直接策略搜索方法
+### AlphaZero 实战：五子棋
+<a id='sec_13'></a>
 
-##### 7 策略梯度方法
-<a id='sec_7'></a>
-
-# 书上都是 tf1 的例子，很乱
-# 还不会用 tf2 重写，先弃坑
-# 2020年6月20日17点10分，先把KDD比赛做完，再回来写这个
-
-
-[./ch_2/sec_7/](./ch_2/sec_7/)
-
-- 修改了“鸳鸯环境”：[yuan_yang_env.py](./ch_1/sec_3/yuan_yang_env.py)
-- 策略迭代：[dp_policy_iter.py](./ch_1/sec_3/dp_policy_iter.py)
-- 价值迭代：[dp_value_iter.py](./ch_1/sec_3/dp_value_iter.py)
-
-- 第 2 篇 直接策略搜索方法
-- - [7 策略梯度方法](#sec_7)
-- - [8 Actor-Critic 方法](#sec_8)
-- - [9 PPO 方法](#sec_9)
-- - [10 DDPG 方法](#sec_10)
-
-- 第 3 篇 基于模型的强化学习方法
-- - [11 基于模型预测控制的强化学习方法](#sec_11)
-- - [12 AlphaZero 原理浅析](#sec_12)
-- - [13 AlphaZero 实战：从零学下五子棋](#sec_13)
+代码在 [./AlphaZero](./AlphaZero) 。
