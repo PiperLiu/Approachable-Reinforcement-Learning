@@ -89,6 +89,7 @@ class MCTS(object):
             (act, node._n_visits) for act, node in self._root._children.items()
         ]
         acts, visits = zip(*act_visits)
+        # 注意，这里是根据 visits 算出的动作选择概率
         act_probs = Softmax(1.0 / temp * np.log(np.array(visits) + 1e-10))
 
         return acts, act_probs

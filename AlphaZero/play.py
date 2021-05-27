@@ -7,6 +7,11 @@ from AlphaZero.game import Board, Game
 from AlphaZero.mcts_alphaZero import MCTSPlayer
 from AlphaZero.policy_value_net_pytorch import PolicyValueNet
 
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument('-t', '--trained', action='store_true')
+args = parser.parse_args()
+
 """
 input location as '3,3' to play
 """
@@ -38,7 +43,7 @@ class Human:
 def run():
     n = 5
     width, height = 8, 8
-    model_file = DIRNAME + '/current_policy.model'
+    model_file = DIRNAME + '/current_policy' + ('_1' if args.trained else '_0') + '.model'
     try:
         board = Board(width=width, height=height, n_in_row=n)
         game = Game(board)
